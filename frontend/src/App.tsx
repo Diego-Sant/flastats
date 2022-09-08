@@ -1,10 +1,17 @@
-import NotificationButton from "./components/NotificationButton";
+import FlaCard from "./components/FlaCard";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
-      <h1>Mundo</h1>
-      <NotificationButton />
+      <Header />
+      <main>
+        <section id="jogadores">
+          <div className="flastats-container">
+            <FlaCard />
+          </div>
+        </section>
+      </main>
     </>
   );
 }

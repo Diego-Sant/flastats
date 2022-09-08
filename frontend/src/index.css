@@ -19,3 +19,13 @@ a:visited {
   color: unset;
   text-decoration: none;
 }
+
+.flastats-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#jogadores {
+  padding: 40px 10px;
+}
