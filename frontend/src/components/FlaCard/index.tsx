@@ -1,6 +1,9 @@
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import NotificationButton from "../../assets/img/notification-icon.svg";
 import "./styles.css";
 import "../NotificationButton/styles.css";
+import ptBR from "date-fns/locale/pt-BR";
 
 function FlaCard() {
   return (
@@ -8,10 +11,22 @@ function FlaCard() {
       <h2 className="flastats-sales-title">Estatísticas</h2>
       <div>
         <div className="flastats-form-control-container">
-          <input className="flastats-form-control" type="text" />
+          <DatePicker
+            selected={new Date()}
+            onChange={(date: Date) => {}}
+            className="flastats-form-control"
+            dateFormat="dd/MM/yyyy"
+            locale={ptBR}
+          />
         </div>
         <div className="flastats-form-control-container">
-          <input className="flastats-form-control" type="text" />
+          <DatePicker
+            selected={new Date()}
+            onChange={(date: Date) => {}}
+            className="flastats-form-control"
+            dateFormat="dd/MM/yyyy"
+            locale={ptBR}
+          />
         </div>
       </div>
 
