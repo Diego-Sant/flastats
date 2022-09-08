@@ -9,7 +9,9 @@ function Header() {
         <h1>FlaStats</h1>
         <p>
           Desenvolvido por{" "}
-          <a href="https://github.com/Diego-Sant">Diego Santana</a>
+          <a href="https://github.com/Diego-Sant" target="_blank">
+            Diego Santana
+          </a>
         </p>
       </div>
     </header>
