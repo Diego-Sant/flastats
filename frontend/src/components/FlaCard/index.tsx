@@ -4,16 +4,23 @@ import NotificationButton from "../../assets/img/notification-icon.svg";
 import "./styles.css";
 import "../NotificationButton/styles.css";
 import ptBR from "date-fns/locale/pt-BR";
+import { useState } from "react";
 
 function FlaCard() {
+  const min = new Date(new Date().setDate(new Date().getDate() - 1346));
+  const max = new Date();
+
+  const [minDate, setMinDate] = useState(min);
+  const [maxDate, setMaxDate] = useState(max);
+
   return (
     <div className="flastats-card">
       <h2 className="flastats-sales-title">Estatísticas</h2>
       <div>
         <div className="flastats-form-control-container">
           <DatePicker
-            selected={new Date()}
-            onChange={(date: Date) => {}}
+            selected={minDate}
+            onChange={(date: Date) => setMinDate(date)}
             className="flastats-form-control"
             dateFormat="dd/MM/yyyy"
             locale={ptBR}
@@ -21,8 +28,8 @@ function FlaCard() {
         </div>
         <div className="flastats-form-control-container">
           <DatePicker
-            selected={new Date()}
-            onChange={(date: Date) => {}}
+            selected={maxDate}
+            onChange={(date: Date) => setMaxDate(date)}
             className="flastats-form-control"
             dateFormat="dd/MM/yyyy"
             locale={ptBR}
