@@ -7,8 +7,8 @@ import ptBR from "date-fns/locale/pt-BR";
 import { useState } from "react";
 
 function FlaCard() {
-  const min = new Date(new Date().setDate(new Date().getDate() - 1346));
-  const max = new Date();
+  const min = new Date(new Date().setDate(new Date().getDate() + 114));
+  const max = new Date(new Date().setDate(new Date().getDate() + 1941));
 
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
