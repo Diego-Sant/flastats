@@ -4,14 +4,21 @@ import NotificationButton from "../../assets/img/notification-icon.svg";
 import "./styles.css";
 import "../NotificationButton/styles.css";
 import ptBR from "date-fns/locale/pt-BR";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function FlaCard() {
-  const min = new Date(new Date().setDate(new Date().getDate() + 114));
-  const max = new Date(new Date().setDate(new Date().getDate() + 1941));
+  const min = new Date(new Date().setDate(new Date().getDate() + 113));
+  const max = new Date(new Date().setDate(new Date().getDate() + 1940));
 
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/stats").then((response) => {
+      console.log(response.data);
+    });
+  }, []);
 
   return (
     <div className="flastats-card">
