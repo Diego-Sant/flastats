@@ -23,7 +23,7 @@ public class StatsService {
 		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
 		
 		LocalDate min = maxDate.equals("") ? today : LocalDate.parse(minDate);
-		LocalDate max = maxDate.equals("") ? today.plusDays(365) : LocalDate.parse(maxDate);
+		LocalDate max = maxDate.equals("") ? today.plusDays(2305) : LocalDate.parse(maxDate);
 		
 		return repository.findStats(min, max, pageable);
 	}

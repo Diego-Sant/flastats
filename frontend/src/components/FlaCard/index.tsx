@@ -6,6 +6,8 @@ import "../NotificationButton/styles.css";
 import ptBR from "date-fns/locale/pt-BR";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../../utils/request";
+import { Stats } from "../../models/stats";
 
 function FlaCard() {
   const min = new Date(new Date().setDate(new Date().getDate() + 113));
@@ -14,9 +16,11 @@ function FlaCard() {
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
 
+  const [stats, setStats] = useState<Stats[]>([]);
+
   useEffect(() => {
-    axios.get("http://localhost:8080/stats").then((response) => {
-      console.log(response.data);
+    axios.get(`${BASE_URL}/stats`).then((response) => {
+      setStats(response.data.content);
     });
   }, []);
 
@@ -58,25 +62,31 @@ function FlaCard() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="show992">#564</td>
-              <td className="show576">31/12/2024</td>
-              <td>Gabriel B.</td>
-              <td className="show992">9</td>
-              <td className="show992">200</td>
-              <td>R$ 1.677,840</td>
-              <td>
-                <div className="flastats-red-btn-container">
-                  <div className="flastats-red-btn">
-                    <img
-                      className="bellnot"
-                      src={NotificationButton}
-                      alt="Notificar"
-                    />
-                  </div>
-                </div>
-              </td>
-            </tr>
+            {stats.map((stat) => {
+              return (
+                <tr key={stat.id}>
+                  <td className="show992">{stat.id}</td>
+                  <td className="show576">
+                    {new Date(stat.date).toLocaleDateString()}
+                  </td>
+                  <td>{stat.playerName}</td>
+                  <td className="show992">{stat.number}</td>
+                  <td className="show992">{stat.games}</td>
+                  <td>R$ {stat.salary.toFixed(3)}</td>
+                  <td>
+                    <div className="flastats-red-btn-container">
+                      <div className="flastats-red-btn">
+                        <img
+                          className="bellnot"
+                          src={NotificationButton}
+                          alt="Notificar"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
