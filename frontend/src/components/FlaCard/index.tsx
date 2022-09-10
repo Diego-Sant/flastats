@@ -1,8 +1,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import NotificationButton from "../../assets/img/notification-icon.svg";
+import NotificationButton from "../NotificationButton";
 import "./styles.css";
-import "../NotificationButton/styles.css";
 import ptBR from "date-fns/locale/pt-BR";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -80,13 +79,7 @@ function FlaCard() {
                   <td>R$ {stat.salary.toFixed(3)}</td>
                   <td>
                     <div className="flastats-red-btn-container">
-                      <div className="flastats-red-btn">
-                        <img
-                          className="bellnot"
-                          src={NotificationButton}
-                          alt="Notificar"
-                        />
-                      </div>
+                      <NotificationButton statsId={stat.id} />
                     </div>
                   </td>
                 </tr>
