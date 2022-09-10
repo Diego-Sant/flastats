@@ -19,10 +19,15 @@ function FlaCard() {
   const [stats, setStats] = useState<Stats[]>([]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/stats`).then((response) => {
-      setStats(response.data.content);
-    });
-  }, []);
+    const dmin = minDate.toISOString().slice(0, 10);
+    const dmax = maxDate.toISOString().slice(0, 10);
+
+    axios
+      .get(`${BASE_URL}/stats?minDate=${dmin}&maxDate=${dmax}`)
+      .then((response) => {
+        setStats(response.data.content);
+      });
+  }, [minDate, maxDate]);
 
   return (
     <div className="flastats-card">
